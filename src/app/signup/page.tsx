@@ -1,9 +1,9 @@
-// src/app/signup/page.tsx
 'use client';
 import { auth } from '@/app/lib/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { FirebaseError } from 'firebase/app'; // ✅ Import FirebaseError type
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
@@ -11,30 +11,29 @@ export default function SignupPage() {
   const router = useRouter();
   const [error, setError] = useState('');
 
-  // src/app/signup/page.tsx (only change below function)
-const handleSignup = async () => {
-  try {
-    const userCred = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCred.user;
+  const handleSignup = async () => {
+    try {
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCred.user;
 
-    // Call your API to create user in DB
-    await fetch('/api/create-user', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        uid: user.uid,
-        email: user.email,
-      }),
-    });
+      await fetch('/api/create-user', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid: user.uid,
+          email: user.email,
+        }),
+      });
 
-    router.push('/welcome');
-  } catch (err: any) {
-    setError(err.message);
-  }
-};
-
-
-
+      router.push('/welcome');
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        setError(err.message);
+      } else {
+        setError('An unexpected error occurred.');
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white">

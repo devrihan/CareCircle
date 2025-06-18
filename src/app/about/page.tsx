@@ -32,8 +32,8 @@ export default function About() {
                 <p className="mt-4 text-md leading-7 text-indigo-100 text-center">
                     Our mission is to connect people based on mutual needs and shared skills.
                     You give what you are good at, and receive what you need — all through trust,
-                    empathy, and a genuine desire to support others. We're not just a service platform,
-                    we're a movement toward a more human, connected world.
+                    empathy, and a genuine desire to support others. We are not just a service platform,
+                    we are a movement toward a more human, connected world.
                 </p>
                 <div className="mt-10 text-center">
                     <Link href="/" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500">

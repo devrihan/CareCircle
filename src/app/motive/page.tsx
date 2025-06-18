@@ -26,9 +26,9 @@ export default function About() {
                 <p className="mt-6 text-lg leading-8 text-indigo-100 text-center">
                     In a world driven by transactions, we believe in contribution over currency.
 
-                    CareCircle was born from the idea that everyone has something to offer — a skill, time, a listening ear — and that help shouldn not always come with a price tag. Here, people support each other through genuine care, shared knowledge, and compassionate action.
+                    CareCircle was born from the idea that everyone has something to offer — a skill, time, a listening ear — and that help should not always come with a price tag. Here, people support each other through genuine care, shared knowledge, and compassionate action.
 
-                    Whether it's offering tutoring in exchange for therapy advice, helping someone cook while they help you code, or just having meaningful conversations — we are building a space where empathy is the only currency.
+                    Whether its offering tutoring in exchange for therapy advice, helping someone cook while they help you code, or just having meaningful conversations — we are building a space where empathy is the only currency.
                 </p>
 
                 <div className="mt-10 text-center">
