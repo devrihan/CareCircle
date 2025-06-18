@@ -2,6 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
+
+
 
 export default function Home() {
   const router = useRouter();
@@ -31,9 +34,15 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <a href="/about" className="text-sm font-semibold text-indigo-100">About</a>
-            <a href="/motive" className="text-sm font-semibold text-indigo-100">Motive</a>
-            <a href="/contact" className="text-sm font-semibold text-indigo-100">Contact</a>
+            <Link href="/about" className="text-sm font-semibold text-indigo-100">
+              About
+            </Link>
+            <Link href="/motive" className="text-sm font-semibold text-indigo-100">
+              Motive
+            </Link>
+            <Link href="/contact" className="text-sm font-semibold text-indigo-100">
+              Contact
+            </Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <button

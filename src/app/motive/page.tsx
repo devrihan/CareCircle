@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 
 export default function About() {
     return (
@@ -31,12 +32,11 @@ export default function About() {
                 </p>
 
                 <div className="mt-10 text-center">
-                    <a
-                        href="/"
-                        className="text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-                    >
-                        ← Back to Home
-                    </a>
+                    <div className="mt-10 text-center">
+                        <Link href="/" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+                            ← Back to Home
+                        </Link>
+                    </div>
                 </div>
             </div>
 

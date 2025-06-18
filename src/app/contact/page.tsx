@@ -1,6 +1,7 @@
 'use client'; // If you're using Next.js app directory
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function Contact() {
   return (
@@ -138,10 +139,9 @@ export default function Contact() {
             </div>
             <label htmlFor="agree" className="text-sm text-white-900">
               By submitting, you agree to our{' '}
-              <a href="#" className="font-semibold text-indigo-600">
-                privacy policy
-              </a>
-              .
+              <Link href="/terms" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                Terms of Service
+              </Link>{' '}
             </label>
           </div>
         </div>
@@ -156,12 +156,8 @@ export default function Contact() {
         </div>
       </form>
       <div className="mt-10 text-center">
-          <a
-            href="/"
-            className="text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-          >
-            ← Back to Home
-          </a>
+        <Link href="/" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500"></Link>
+          ← Back to Home
         </div>
     </div>
   );
