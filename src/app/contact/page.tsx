@@ -22,7 +22,7 @@ export default function Contact() {
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-4xl font-semibold tracking-tight text-indigo-100 sm:text-5xl">Contact Us</h2>
         <p className="mt-2 text-lg text-indigo-100">
-          Reach out to us — we’d love to hear from you.
+          Reach out to us — we would love to hear from you.
         </p>
       </div>
 
@@ -151,7 +151,7 @@ export default function Contact() {
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-2 focus:outline-indigo-600"
           >
-            Let’s talk
+            Lets talk
           </button>
         </div>
       </form>

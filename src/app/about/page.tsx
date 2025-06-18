@@ -26,12 +26,12 @@ export default function About() {
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-indigo-100 text-center">
                     CareCircle is a platform where people help each other — no money involved.
-                    Whether it’s designing a logo, teaching a skill, or simply lending a hand,
+                    Whether its designing a logo, teaching a skill, or simply lending a hand,
                     we believe value can be exchanged with care, not cash.
                 </p>
                 <p className="mt-4 text-md leading-7 text-indigo-100 text-center">
                     Our mission is to connect people based on mutual needs and shared skills.
-                    You give what you’re good at, and receive what you need — all through trust,
+                    You give what you are good at, and receive what you need — all through trust,
                     empathy, and a genuine desire to support others. We're not just a service platform,
                     we're a movement toward a more human, connected world.
                 </p>
