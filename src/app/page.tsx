@@ -3,11 +3,13 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 
 
 export default function Home() {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="bg-blackGlass min-h-screen relative">
@@ -26,7 +28,11 @@ export default function Home() {
             </button>
           </div>
           <div className="flex lg:hidden">
-            <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
               <span className="sr-only">Open main menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -34,15 +40,9 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link href="/about" className="text-sm font-semibold text-indigo-100">
-              About
-            </Link>
-            <Link href="/motive" className="text-sm font-semibold text-indigo-100">
-              Motive
-            </Link>
-            <Link href="/contact" className="text-sm font-semibold text-indigo-100">
-              Contact
-            </Link>
+            <Link href="/about" className="text-sm font-semibold text-indigo-100">About</Link>
+            <Link href="/motive" className="text-sm font-semibold text-indigo-100">Motive</Link>
+            <Link href="/contact" className="text-sm font-semibold text-indigo-100">Contact</Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <button
@@ -53,6 +53,21 @@ export default function Home() {
             </button>
           </div>
         </nav>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="lg:hidden px-6 pb-4">
+            <Link href="/about" className="block py-2 text-sm font-semibold text-indigo-100">About</Link>
+            <Link href="/motive" className="block py-2 text-sm font-semibold text-indigo-100">Motive</Link>
+            <Link href="/contact" className="block py-2 text-sm font-semibold text-indigo-100">Contact</Link>
+            <button
+              onClick={() => router.push('/login')}
+              className="block w-full text-left py-2 text-sm font-semibold text-indigo-100"
+            >
+              Log in &rarr;
+            </button>
+          </div>
+        )}
       </header>
 
       <div className="relative isolate px-6 pt-14 lg:px-8">
