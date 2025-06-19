@@ -1,8 +1,8 @@
 
 import mongoose, { Connection } from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI!;
-console.log('MONGODB_URI:', MONGODB_URI);
+const MONGODB_URI = "mongodb+srv://rihandav2004:uEm0F7HshKTBmmHS@cluster0.sx7ugdv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
 console.log('Test');
 
 
