@@ -27,23 +27,36 @@ export default function Home() {
               />
             </button>
           </div>
+
+          {/* Hamburger toggle button */}
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
               onClick={() => setMenuOpen(!menuOpen)}
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-100"
             >
-              <span className="sr-only">Open main menu</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
+              <span className="sr-only">Toggle menu</span>
+              {menuOpen ? (
+                // Close icon
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                // Hamburger icon
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              )}
             </button>
           </div>
+
+          {/* Desktop nav */}
           <div className="hidden lg:flex lg:gap-x-12">
             <Link href="/about" className="text-sm font-semibold text-indigo-100">About</Link>
             <Link href="/motive" className="text-sm font-semibold text-indigo-100">Motive</Link>
             <Link href="/contact" className="text-sm font-semibold text-indigo-100">Contact</Link>
           </div>
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <button
               onClick={() => router.push('/login')}
@@ -54,21 +67,22 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile dropdown menu */}
         {menuOpen && (
-          <div className="lg:hidden px-6 pb-4">
-            <Link href="/about" className="block py-2 text-sm font-semibold text-indigo-100">About</Link>
-            <Link href="/motive" className="block py-2 text-sm font-semibold text-indigo-100">Motive</Link>
-            <Link href="/contact" className="block py-2 text-sm font-semibold text-indigo-100">Contact</Link>
+          <div className="absolute top-full w-full bg-blackGlass px-6 pb-4 flex flex-col space-y-4 z-50">
+            <Link href="/about" className="text-sm font-semibold text-indigo-100">About</Link>
+            <Link href="/motive" className="text-sm font-semibold text-indigo-100">Motive</Link>
+            <Link href="/contact" className="text-sm font-semibold text-indigo-100">Contact</Link>
             <button
               onClick={() => router.push('/login')}
-              className="block w-full text-left py-2 text-sm font-semibold text-indigo-100"
+              className="text-sm font-semibold text-indigo-100 text-left"
             >
               Log in &rarr;
             </button>
           </div>
         )}
       </header>
+
 
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
