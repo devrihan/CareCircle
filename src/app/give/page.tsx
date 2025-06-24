@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-
 export default function GiveHelp() {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,11 +15,30 @@ export default function GiveHelp() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Submitted:', formData);
-    // TODO: Send this to your backend / database
-    alert('Thank you for offering your help!');
+
+    try {
+      const res = await fetch('/api/give', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert('Thank you for offering your help!');
+        setFormData({ name: '', age: '', help: '', contact: '', email: '' }); // reset form
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('Server error. Please try later.');
+    }
   };
 
   return (
@@ -102,8 +120,6 @@ export default function GiveHelp() {
           </button>
         </form>
       </div>
-      
-
     </div>
   );
 }

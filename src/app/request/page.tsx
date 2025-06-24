@@ -15,11 +15,30 @@ export default function AskHelp() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Submitted:', formData);
-    // TODO: Send this to your backend / database
-    alert('Your request has been submitted!');
+
+    try {
+      const res = await fetch('/api/ask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert('Your request has been submitted!');
+        setFormData({ name: '', age: '', whatINeed: '', contact: '', email: '' });
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('Server error. Please try later.');
+    }
   };
 
   return (

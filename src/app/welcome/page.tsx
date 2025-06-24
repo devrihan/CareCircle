@@ -1,11 +1,25 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 
-import React from 'react';
 import Link from 'next/link';
 import Footer from '@/app/components/Footer';
+import GiveHelpCard from '@/app/components/GiveHelpCard';
+import RequestHelpCard from '@/app/components/RequestHelpCard';
 
 
 export default function WelcomePage() {
+  const [giveHelpData, setGiveHelpData] = useState([]);
+  const [requestHelpData, setRequestHelpData] = useState([]);
+
+  useEffect(() => {
+  fetch('/api/give')
+    .then(res => res.json())
+    .then(data => setGiveHelpData(data.givers || []));
+
+  fetch('/api/ask')
+    .then(res => res.json())
+    .then(data => setRequestHelpData(data.askers || []));
+}, []);
   return (
     <div className="bg-blackGlass min-h-screen relative text-white">
       {/* Blurry Gradient Background */}
@@ -49,34 +63,32 @@ export default function WelcomePage() {
         </div>
       </div>
 
-      {/* Help Requests */}
+      {/* Request Help Section */}
       <div className="mt-20 px-6 md:px-12">
         <h2 className="text-2xl font-semibold mb-6">People Asking for Help</h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="bg-blackGlass rounded-lg border border-indigo-500 p-4">
-              <h3 className="text-lg font-semibold text-indigo-200">John Doe</h3>
-              <p className="text-sm text-indigo-100 mt-1">Needs help with resume building and interview prep.</p>
-              <Link href="#" className="text-indigo-400 text-sm mt-2 inline-block hover:underline">
-                View Request →
-              </Link>
-            </div>
+          {requestHelpData.map((person: any, i) => (
+            <RequestHelpCard
+              key={i}
+              name={person.name}
+              request={person.help}
+              contact={person.contact}
+            />
           ))}
         </div>
       </div>
 
-      {/* Willing to Help */}
+      {/* Give Help Section */}
       <div className="mt-20 px-6 md:px-12">
         <h2 className="text-2xl font-semibold mb-6">People Willing to Help</h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="bg-blackGlass rounded-lg border border-purple-500 p-4">
-              <h3 className="text-lg font-semibold text-purple-200">Jane Smith</h3>
-              <p className="text-sm text-purple-100 mt-1">Can teach Photoshop and Canva for free on weekends.</p>
-              <Link href="#" className="text-purple-400 text-sm mt-2 inline-block hover:underline">
-                View Profile →
-              </Link>
-            </div>
+          {giveHelpData.map((person: any, i) => (
+            <GiveHelpCard
+              key={i}
+              name={person.name}
+              help={person.help}
+              contact={person.contact}
+            />
           ))}
         </div>
       </div>
